@@ -5,7 +5,6 @@ class LoginPage:
 
     USERNAME = (By.NAME, "username")
     PASSWORD = (By.NAME, "password")
-
     LOGIN_BUTTON = (By.XPATH, "//input[@value='Log In']")
 
     def __init__(self, driver):

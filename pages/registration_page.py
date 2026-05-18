@@ -26,7 +26,7 @@ class RegistrationPage:
     def click_register_link(self):
         self.driver.find_element(*self.REGISTER_LINK).click()
 
-    def enter_registration_details(self):
+    def enter_registration_details(self, username, password):
 
         self.driver.find_element(*self.FIRST_NAME).send_keys("Ram")
         self.driver.find_element(*self.LAST_NAME).send_keys("Bandaru")
@@ -37,9 +37,9 @@ class RegistrationPage:
         self.driver.find_element(*self.PHONE).send_keys("8688726584")
         self.driver.find_element(*self.SSN).send_keys("123456")
 
-        self.driver.find_element(*self.USERNAME).send_keys("Ram")
-        self.driver.find_element(*self.PASSWORD).send_keys("Ramparabank@123")
-        self.driver.find_element(*self.CONFIRM_PASSWORD).send_keys("Ramparabank@123")
+        self.driver.find_element(*self.USERNAME).send_keys(username)
+        self.driver.find_element(*self.PASSWORD).send_keys(password)
+        self.driver.find_element(*self.CONFIRM_PASSWORD).send_keys(password)
 
     def click_register_button(self):
         self.driver.find_element(*self.REGISTER_BUTTON).click()
