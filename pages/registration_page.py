@@ -28,18 +28,18 @@ class RegistrationPage:
 
     def enter_registration_details(self):
 
-        self.driver.find_element(*self.FIRST_NAME).send_keys("Ram")
-        self.driver.find_element(*self.LAST_NAME).send_keys("Bandaru")
-        self.driver.find_element(*self.ADDRESS).send_keys("Vijayawada")
-        self.driver.find_element(*self.CITY).send_keys("Vijayawada")
-        self.driver.find_element(*self.STATE).send_keys("Andhra Pradesh")
-        self.driver.find_element(*self.ZIPCODE).send_keys("520001")
-        self.driver.find_element(*self.PHONE).send_keys("8688726584")
-        self.driver.find_element(*self.SSN).send_keys("123456")
+        self.driver.find_element(*self.FIRST_NAME).send_keys("Prathmesh")
+        self.driver.find_element(*self.LAST_NAME).send_keys("Suhagpure")
+        self.driver.find_element(*self.ADDRESS).send_keys("Dadaji Nagar")
+        self.driver.find_element(*self.CITY).send_keys("Saoner")
+        self.driver.find_element(*self.STATE).send_keys("Maharashtra")
+        self.driver.find_element(*self.ZIPCODE).send_keys("441107")
+        self.driver.find_element(*self.PHONE).send_keys("7038360065")
+        self.driver.find_element(*self.SSN).send_keys("123654789")
 
-        self.driver.find_element(*self.USERNAME).send_keys("Ram")
-        self.driver.find_element(*self.PASSWORD).send_keys("Ramparabank@123")
-        self.driver.find_element(*self.CONFIRM_PASSWORD).send_keys("Ramparabank@123")
+        self.driver.find_element(*self.USERNAME).send_keys("prathmesh1")
+        self.driver.find_element(*self.PASSWORD).send_keys("p@01012002")
+        self.driver.find_element(*self.CONFIRM_PASSWORD).send_keys("p@01012002")
 
     def click_register_button(self):
         self.driver.find_element(*self.REGISTER_BUTTON).click()

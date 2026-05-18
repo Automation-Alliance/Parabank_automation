@@ -4,12 +4,12 @@ from pages.login_page import LoginPage
 import time
 
 
-@given('user launches parabank application')
+@given("user launches parabank application")
 def launch_application(context):
     time.sleep(2)
 
 
-@when('user clicks on register link')
+@when("user clicks on register link")
 def click_register(context):
 
     context.registration = RegistrationPage(context.driver)
@@ -18,7 +18,7 @@ def click_register(context):
     time.sleep(2)
 
 
-@when('user enters valid registration details')
+@when("user enters valid registration details")
 def enter_registration_details(context):
 
     context.registration.enter_registration_details()
@@ -26,7 +26,7 @@ def enter_registration_details(context):
     time.sleep(2)
 
 
-@when('clicks on register button')
+@when("clicks on register button")
 def click_register_button(context):
 
     context.registration.click_register_button()
@@ -34,18 +34,18 @@ def click_register_button(context):
     time.sleep(3)
 
 
-@when('user enters valid username and password')
+@when("user enters valid username and password")
 def enter_login_credentials(context):
 
     context.login = LoginPage(context.driver)
 
-    context.login.enter_username("Ram")
-    context.login.enter_password("Ramparabank@123")
+    context.login.enter_username("prathmesh1")
+    context.login.enter_password("p@01012002")
 
     time.sleep(2)
 
 
-@when('clicks on login button')
+@when("clicks on login button")
 def click_login(context):
 
     context.login.click_login_button()
@@ -53,7 +53,7 @@ def click_login(context):
     time.sleep(5)
 
 
-@then('user should navigate to parabank home page')
+@then("user should navigate to parabank home page")
 def verify_login(context):
 
     print("Login Successful")
