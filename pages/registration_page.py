@@ -37,7 +37,7 @@ class RegistrationPage:
         self.driver.find_element(*self.PHONE).send_keys("7038360065")
         self.driver.find_element(*self.SSN).send_keys("123654789")
 
-        self.driver.find_element(*self.USERNAME).send_keys("prathmesh2")
+        self.driver.find_element(*self.USERNAME).send_keys("prathmesh3")
         self.driver.find_element(*self.PASSWORD).send_keys("p@01012002")
         self.driver.find_element(*self.CONFIRM_PASSWORD).send_keys("p@01012002")
 
