@@ -3,63 +3,43 @@ from selenium.webdriver.common.by import By
 
 class RegistrationPage:
 
+    REGISTER_LINK = (By.LINK_TEXT, "Register")
+
+    FIRST_NAME = (By.ID, "customer.firstName")
+    LAST_NAME = (By.ID, "customer.lastName")
+    ADDRESS = (By.ID, "customer.address.street")
+    CITY = (By.ID, "customer.address.city")
+    STATE = (By.ID, "customer.address.state")
+    ZIPCODE = (By.ID, "customer.address.zipCode")
+    PHONE = (By.ID, "customer.phoneNumber")
+    SSN = (By.ID, "customer.ssn")
+
+    USERNAME = (By.ID, "customer.username")
+    PASSWORD = (By.ID, "customer.password")
+    CONFIRM_PASSWORD = (By.ID, "repeatedPassword")
+
+    REGISTER_BUTTON = (By.XPATH, "//input[@value='Register']")
+
     def __init__(self, driver):
         self.driver = driver
 
-    # Locators
-    register_link = (By.LINK_TEXT, "Register")
-
-    first_name = (By.ID, "customer.firstName")
-    last_name = (By.ID, "customer.lastName")
-    address = (By.ID, "customer.address.street")
-    city = (By.ID, "customer.address.city")
-    state = (By.ID, "customer.address.state")
-    zipcode = (By.ID, "customer.address.zipCode")
-    phone = (By.ID, "customer.phoneNumber")
-    ssn = (By.ID, "customer.ssn")
-    username = (By.ID, "customer.username")
-    password = (By.ID, "customer.password")
-    confirm_password = (By.ID, "repeatedPassword")
-
-    register_button = (By.XPATH, "//input[@value='Register']")
-
-    success_message = (
-        By.XPATH,
-        "//h1[contains(text(),'Welcome')]"
-    )
-
-    # Methods
     def click_register_link(self):
-        self.driver.find_element(*self.register_link).click()
+        self.driver.find_element(*self.REGISTER_LINK).click()
 
     def enter_registration_details(self):
 
-        self.driver.find_element(*self.first_name).send_keys("Manohar")
+        self.driver.find_element(*self.FIRST_NAME).send_keys("Manohar")
+        self.driver.find_element(*self.LAST_NAME).send_keys("Yalala")
+        self.driver.find_element(*self.ADDRESS).send_keys("Chirala")
+        self.driver.find_element(*self.CITY).send_keys("Chirala")
+        self.driver.find_element(*self.STATE).send_keys("Andhra Pradesh")
+        self.driver.find_element(*self.ZIPCODE).send_keys("523170")
+        self.driver.find_element(*self.PHONE).send_keys("1234567890")
+        self.driver.find_element(*self.SSN).send_keys("123456")
 
-        self.driver.find_element(*self.last_name).send_keys("Reddy")
-
-        self.driver.find_element(*self.address).send_keys("Hyderabad")
-
-        self.driver.find_element(*self.city).send_keys("Hyderabad")
-
-        self.driver.find_element(*self.state).send_keys("Telangana")
-
-        self.driver.find_element(*self.zipcode).send_keys("500001")
-
-        self.driver.find_element(*self.phone).send_keys("9876543210")
-
-        self.driver.find_element(*self.ssn).send_keys("123456789")
-
-        self.driver.find_element(*self.username).send_keys("manohar123")
-
-        self.driver.find_element(*self.password).send_keys("demo123")
-
-        self.driver.find_element(*self.confirm_password).send_keys("demo123")
+        self.driver.find_element(*self.USERNAME).send_keys("Mano")
+        self.driver.find_element(*self.PASSWORD).send_keys("Manoparabank@123")
+        self.driver.find_element(*self.CONFIRM_PASSWORD).send_keys("Manogit add .parabank@123")
 
     def click_register_button(self):
-        self.driver.find_element(*self.register_button).click()
-
-    def verify_registration_success(self):
-        return self.driver.find_element(
-            *self.success_message
-        ).is_displayed()
+        self.driver.find_element(*self.REGISTER_BUTTON).click()
