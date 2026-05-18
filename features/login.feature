@@ -1,7 +1,7 @@
 Feature: Login Functionality
 
-    Scenario: Valid Login
-        Given User opens the login page
-        When User enters username and password
-        And User clicl login button
-        Then User should see dashboard
+  Scenario: Login with valid credentials
+    Given user launches parabank application
+    When user enters valid username and password
+    And clicks on login button
+    Then user should login successfully
