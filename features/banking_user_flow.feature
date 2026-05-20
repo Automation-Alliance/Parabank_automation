@@ -1,5 +1,6 @@
 Feature: Banking User Flow
 
+  @Registration
   Scenario: User Registration
     Given user launches parabank application
     When user clicks on register link
@@ -7,6 +8,7 @@ Feature: Banking User Flow
     And clicks on register button
     Then user account should be created successfully
 
+  @Login
   Scenario: User Login
     Given user launches parabank application
     When user enters valid username and password
@@ -20,6 +22,7 @@ Feature: Banking User Flow
     And clicks on find login info button
     Then user should recover login credentials successfully
 
+  @OpenNewAccount
   Scenario: Open New Account
     Given user launches parabank application
     When user enters valid username and password
@@ -37,6 +40,7 @@ Feature: Banking User Flow
     And user clicks on accounts overview link
     Then accounts overview page should display successfully
 
+  @TransferFunds
   Scenario: Transfer Funds
     Given user launches parabank application
     When user enters valid username and password
