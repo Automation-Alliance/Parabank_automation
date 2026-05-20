@@ -1,11 +1,12 @@
 from behave import when, then
 from pages.transfer_funds_page import TransferFundsPage
-from utils.db_utils import DatabaseManager
 import time
 
 
 @when("user clicks on transfer funds link")
 def click_transfer(context):
+
+    time.sleep(3)
 
     context.transfer = TransferFundsPage(context.driver)
 
@@ -14,25 +15,36 @@ def click_transfer(context):
 
 @when("user enters transfer amount")
 def amount(context):
-    context.amount = "100"
-    context.transfer.enter_amount(context.amount)
+
+    time.sleep(2)
+
+    context.transfer.enter_amount()
 
 
 @when("user selects from account")
 def from_account(context):
-    context.transfer.select_from_account(0)
-    context.from_account = context.transfer.get_selected_from_account()
+
+    time.sleep(2)
+
+    context.transfer.select_from_account()
 
 
 @when("user selects to account")
 def to_account(context):
-    context.transfer.select_to_account(1)
-    context.to_account = context.transfer.get_selected_to_account()
+
+    time.sleep(2)
+
+    context.transfer.select_to_account()
 
 
 @when("user clicks on transfer button")
 def transfer_button(context):
+
+    time.sleep(3)
+
     context.transfer.click_transfer_button()
+
+    time.sleep(3)
 
 
 @then("funds should transfer successfully")
@@ -44,10 +56,4 @@ def verify_transfer(context):
 
     assert "Transfer Complete!" in message
 
-    db = DatabaseManager()
-
-    db.insert_transaction(context.from_account, context.to_account, context.amount)
-
-    db.close_connection()
-
-    print("Transaction recorded in database")
+    time.sleep(5)
