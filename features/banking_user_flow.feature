@@ -1,6 +1,6 @@
 Feature: Banking User Flow
 
-  @Registration
+
   Scenario: User Registration
     Given user launches parabank application
     When user clicks on register link
@@ -87,3 +87,25 @@ Feature: Banking User Flow
     And user enters loan details
     And user clicks on apply now button
     Then loan request should submit successfully
+
+  Scenario: Invalid Login
+    Given user launches parabank application
+    When user enters invalid username and password
+    And clicks on login button
+    Then invalid login error message should display
+
+
+  Scenario: Logout
+    Given user launches parabank application
+    When user enters valid username and password
+    And clicks on login button
+    And user clicks on logout link
+    Then user should logout successfully
+
+
+# Scenario: Login Screenshot Test
+
+#   Given user launches parabank application
+#   When user enters valid username and password
+#   And clicks on login button
+#   Then user should navigate to parabank home page

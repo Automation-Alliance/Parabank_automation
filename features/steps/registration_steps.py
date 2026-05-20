@@ -18,7 +18,7 @@ def click_register(context):
 @when("user enters valid registration details")
 def enter_details(context):
 
-    username = f"user{int(time.time())}"
+    username = "admin123"
     password = "admin123"
 
     context.username = username

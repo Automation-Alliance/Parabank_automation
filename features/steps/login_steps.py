@@ -1,30 +1,54 @@
 from behave import when, then
 from pages.login_page import LoginPage
-from utils.db_utils import DatabaseManager
+import time
 
 
 @when("user enters valid username and password")
-def step_valid_login(context):
-    context.login_page = LoginPage(context.driver)
+def login_data(context):
 
-    db = DatabaseManager()
+    context.login = LoginPage(context.driver)
 
-    user = db.get_user()
+    context.login.enter_username(context.username)
 
-    username = user[0]
-    password = user[1]
+    context.login.enter_password(context.password)
 
-    context.login_page.enter_username(username)
-    context.login_page.enter_password(password)
 
-    db.close_connection()
+@when("user enters invalid username and password")
+def invalid_login(context):
+
+    context.login = LoginPage(context.driver)
+
+    context.login.enter_username("wronguser")
+
+    context.login.enter_password("wrongpassword")
 
 
 @when("clicks on login button")
 def click_login(context):
-    context.login_page.click_login_button()
+
+    context.login.click_login_button()
+
+    time.sleep(3)
 
 
 @then("user should navigate to parabank home page")
 def verify_login(context):
+
     print("Login Successful")
+
+
+@then("invalid login error message should display")
+def verify_invalid_login(context):
+
+    message = context.login.get_error_message()
+
+    print(message)
+
+    assert "could not be verified" in message
+
+    # @then('login should be successful')
+    # def failed_step(context):
+
+    #     assert False
+
+    time.sleep(5)

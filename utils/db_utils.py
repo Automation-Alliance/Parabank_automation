@@ -40,25 +40,6 @@ class DatabaseManager:
 
         return self.cursor.fetchone()
 
-    def insert_transaction(self, from_account, to_account, amount):
-
-        query = """INSERT INTO transactions(from_account, to_account, amount) 
-        VALUES (%s, %s, %s) """
-
-        values = (from_account, to_account, amount)
-
-        self.cursor.execute(query, values)
-
-        self.connection.commit()
-
-    def get_latest_transaction(self):
-
-        query = """ SELECT * FROM transactions ORDER BY id DESC LIMIT 1 """
-
-        self.cursor.execute(query)
-
-        return self.cursor.fetchone()
-
     def close_connection(self):
 
         self.cursor.close()
