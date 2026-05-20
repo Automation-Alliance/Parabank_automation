@@ -26,20 +26,20 @@ class RegistrationPage:
     def click_register_link(self):
         self.driver.find_element(*self.REGISTER_LINK).click()
 
-    def enter_registration_details(self):
+    def enter_registration_details(self, username, password):
 
-        self.driver.find_element(*self.FIRST_NAME).send_keys("Manohar")
-        self.driver.find_element(*self.LAST_NAME).send_keys("Yalala")
-        self.driver.find_element(*self.ADDRESS).send_keys("Chirala")
-        self.driver.find_element(*self.CITY).send_keys("Chirala")
+        self.driver.find_element(*self.FIRST_NAME).send_keys("Ram")
+        self.driver.find_element(*self.LAST_NAME).send_keys("Bandaru")
+        self.driver.find_element(*self.ADDRESS).send_keys("Vijayawada")
+        self.driver.find_element(*self.CITY).send_keys("Vijayawada")
         self.driver.find_element(*self.STATE).send_keys("Andhra Pradesh")
-        self.driver.find_element(*self.ZIPCODE).send_keys("523170")
-        self.driver.find_element(*self.PHONE).send_keys("1234567890")
+        self.driver.find_element(*self.ZIPCODE).send_keys("520001")
+        self.driver.find_element(*self.PHONE).send_keys("8688726584")
         self.driver.find_element(*self.SSN).send_keys("123456")
 
-        self.driver.find_element(*self.USERNAME).send_keys("Mano")
-        self.driver.find_element(*self.PASSWORD).send_keys("Manoparabank@123")
-        self.driver.find_element(*self.CONFIRM_PASSWORD).send_keys("Manogit add .parabank@123")
+        self.driver.find_element(*self.USERNAME).send_keys(username)
+        self.driver.find_element(*self.PASSWORD).send_keys(password)
+        self.driver.find_element(*self.CONFIRM_PASSWORD).send_keys(password)
 
     def click_register_button(self):
         self.driver.find_element(*self.REGISTER_BUTTON).click()

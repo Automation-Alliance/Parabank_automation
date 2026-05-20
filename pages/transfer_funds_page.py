@@ -1,12 +1,82 @@
 from selenium.webdriver.common.by import By
-from pages.base_page import BasePage
+from selenium.webdriver.support.ui import Select
 
 
-class TransferFundsPage(BasePage):
+class TransferFundsPage:
 
-    amount = (By.ID, "amount")
-    transfer_button = (By.XPATH, "//input[@value='Transfer']")
+    TRANSFER_FUNDS_LINK = (
+        By.LINK_TEXT,
+        "Transfer Funds"
+    )
 
-    def transfer_funds(self, amount_value):
-        self.enter_text(self.amount, amount_value)
-        self.click_element(self.transfer_button)
+    AMOUNT = (
+        By.ID,
+        "amount"
+    )
+
+    FROM_ACCOUNT = (
+        By.ID,
+        "fromAccountId"
+    )
+
+    TO_ACCOUNT = (
+        By.ID,
+        "toAccountId"
+    )
+
+    TRANSFER_BUTTON = (
+        By.XPATH,
+        "//input[@value='Transfer']"
+    )
+
+    SUCCESS_MESSAGE = (
+        By.XPATH,
+        "//h1[contains(text(),'Transfer Complete!')]"
+    )
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def click_transfer_funds_link(self):
+
+        self.driver.find_element(
+            *self.TRANSFER_FUNDS_LINK
+        ).click()
+
+    def enter_amount(self):
+
+        self.driver.find_element(
+            *self.AMOUNT
+        ).send_keys("100")
+
+    def select_from_account(self):
+
+        dropdown = Select(
+            self.driver.find_element(
+                *self.FROM_ACCOUNT
+            )
+        )
+
+        dropdown.select_by_index(0)
+
+    def select_to_account(self):
+
+        dropdown = Select(
+            self.driver.find_element(
+                *self.TO_ACCOUNT
+            )
+        )
+
+        dropdown.select_by_index(0)
+
+    def click_transfer_button(self):
+
+        self.driver.find_element(
+            *self.TRANSFER_BUTTON
+        ).click()
+
+    def get_success_message(self):
+
+        return self.driver.find_element(
+            *self.SUCCESS_MESSAGE
+        ).text

@@ -23,12 +23,12 @@ class ForgotPasswordPage:
 
     def enter_recovery_details(self):
 
-        self.driver.find_element(*self.FIRST_NAME).send_keys("Manohar")
-        self.driver.find_element(*self.LAST_NAME).send_keys("Yalala")
-        self.driver.find_element(*self.ADDRESS).send_keys("Chirala")
-        self.driver.find_element(*self.CITY).send_keys("Chirala")
+        self.driver.find_element(*self.FIRST_NAME).send_keys("Ram")
+        self.driver.find_element(*self.LAST_NAME).send_keys("Bandaru")
+        self.driver.find_element(*self.ADDRESS).send_keys("Vijayawada")
+        self.driver.find_element(*self.CITY).send_keys("Vijayawada")
         self.driver.find_element(*self.STATE).send_keys("Andhra Pradesh")
-        self.driver.find_element(*self.ZIPCODE).send_keys("523170")
+        self.driver.find_element(*self.ZIPCODE).send_keys("520001")
         self.driver.find_element(*self.SSN).send_keys("123456")
 
     def click_find_login_button(self):
