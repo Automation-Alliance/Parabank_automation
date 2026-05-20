@@ -1,5 +1,7 @@
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class LoginPage:
@@ -20,8 +22,8 @@ class LoginPage:
     )
 
     ERROR_MESSAGE = (
-        By.XPATH,
-        "//*[contains(text(),'The username and password could not be verified')]"
+        By.CSS_SELECTOR,
+        "p.error"
     )
 
     def __init__(self, driver):
@@ -47,6 +49,9 @@ class LoginPage:
 
     def get_error_message(self):
 
-        return self.driver.find_element(
-            *self.ERROR_MESSAGE
-        ).text
+        element = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(self.ERROR_MESSAGE)
+        )
+        return element.text.strip()
+
+

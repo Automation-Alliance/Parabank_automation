@@ -40,7 +40,7 @@ class UpdateContactInfoPage:
 
         phone.clear()
 
-        phone.send_keys("9999999999")
+        phone.send_keys("8688726584")
 
     def click_update_profile_button(self):
 

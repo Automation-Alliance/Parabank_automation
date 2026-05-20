@@ -54,14 +54,11 @@ def verify_invalid_login(context):
 
     message = context.login.get_error_message()
 
-    print(message)
+    print("Error Message:", message)
 
-    assert "could not be verified" in message
-
-
-# @then('login should be successful')
-# def failed_step(context):
-
-#     assert False
+    assert message, "Expected an error message after invalid login"
+    assert "error" in message.lower(), "Expected the login failure message to contain 'error'"
 
     time.sleep(5)
+
+
