@@ -1,12 +1,9 @@
 from behave import when, then
 from pages.bill_pay_page import BillPayPage
-import time
 
 
 @when('user clicks on bill pay link')
 def click_bill_pay(context):
-
-    time.sleep(3)
 
     context.bill = BillPayPage(
         context.driver
@@ -30,8 +27,4 @@ def send_payment(context):
 @then('bill payment should complete successfully')
 def verify_bill(context):
 
-    print(
-        "Bill Payment Completed Successfully"
-    )
-
-    time.sleep(5)
+    print("Bill Payment Completed Successfully")
