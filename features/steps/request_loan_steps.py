@@ -1,16 +1,11 @@
 from behave import when, then
 from pages.request_loan_page import RequestLoanPage
-import time
 
 
 @when('user clicks on request loan link')
 def click_request_loan(context):
 
-    time.sleep(3)
-
-    context.loan = RequestLoanPage(
-        context.driver
-    )
+    context.loan = RequestLoanPage(context.driver)
 
     context.loan.click_request_loan_link()
 
@@ -18,23 +13,17 @@ def click_request_loan(context):
 @when('user enters loan details')
 def loan_details(context):
 
-    time.sleep(2)
-
     context.loan.enter_loan_details()
 
 
 @when('user clicks on apply now button')
 def apply_now(context):
 
-    time.sleep(2)
-
     context.loan.click_apply_now_button()
 
 
 @then('loan request should submit successfully')
 def verify_loan(context):
-
-    time.sleep(3)
 
     success = context.loan.get_success_message()
 
@@ -53,5 +42,3 @@ def verify_loan(context):
     assert "Approved" in approved
 
     assert "Congratulations" in congrats
-
-    time.sleep(5)

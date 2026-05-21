@@ -14,23 +14,37 @@ class LoginPage:
     ERROR_MESSAGE = (By.CSS_SELECTOR, "p.error")
 
     def __init__(self, driver):
+
         self.driver = driver
+
+        self.wait = WebDriverWait(driver, 10)
 
     def enter_username(self, username):
 
-        self.driver.find_element(*self.USERNAME).send_keys(username)
+        username_field = self.wait.until(
+            EC.visibility_of_element_located(self.USERNAME)
+        )
+
+        username_field.send_keys(username)
 
     def enter_password(self, password):
 
-        self.driver.find_element(*self.PASSWORD).send_keys(password)
+        password_field = self.wait.until(
+            EC.visibility_of_element_located(self.PASSWORD)
+        )
+
+        password_field.send_keys(password)
 
     def click_login_button(self):
 
-        self.driver.find_element(*self.LOGIN_BUTTON).click()
+        login_button = self.wait.until(EC.element_to_be_clickable(self.LOGIN_BUTTON))
+
+        login_button.click()
 
     def get_error_message(self):
 
-        element = WebDriverWait(self.driver, 10).until(
+        error_element = self.wait.until(
             EC.visibility_of_element_located(self.ERROR_MESSAGE)
         )
-        return element.text.strip()
+
+        return error_element.text.strip()
