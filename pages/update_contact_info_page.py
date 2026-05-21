@@ -1,41 +1,37 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class UpdateContactInfoPage:
 
-    UPDATE_CONTACT_INFO_LINK = (
-        By.LINK_TEXT,
-        "Update Contact Info"
-    )
+    UPDATE_CONTACT_INFO_LINK = (By.LINK_TEXT, "Update Contact Info")
 
-    PHONE = (
-        By.ID,
-        "customer.phoneNumber"
-    )
+    PHONE = (By.ID, "customer.phoneNumber")
 
-    UPDATE_BUTTON = (
-        By.XPATH,
-        "//input[@value='Update Profile']"
-    )
-
-    SUCCESS_MESSAGE = (
-        By.XPATH,
-        "//h1[contains(text(),'Profile Updated')]"
-    )
+    UPDATE_BUTTON = (By.XPATH, "//input[@value='Update Profile']")
 
     def __init__(self, driver):
+
         self.driver = driver
+        self.wait = WebDriverWait(driver, 10)
 
     def click_update_contact_info_link(self):
 
-        self.driver.find_element(
-            *self.UPDATE_CONTACT_INFO_LINK
-        ).click()
+        update_link = self.wait.until(
+            EC.element_to_be_clickable(
+                self.UPDATE_CONTACT_INFO_LINK
+            )
+        )
+
+        update_link.click()
 
     def update_contact_information(self):
 
-        phone = self.driver.find_element(
-            *self.PHONE
+        phone = self.wait.until(
+            EC.visibility_of_element_located(
+                self.PHONE
+            )
         )
 
         phone.clear()
@@ -44,12 +40,14 @@ class UpdateContactInfoPage:
 
     def click_update_profile_button(self):
 
-        self.driver.find_element(
-            *self.UPDATE_BUTTON
-        ).click()
+        update_button = self.wait.until(
+            EC.element_to_be_clickable(
+                self.UPDATE_BUTTON
+            )
+        )
 
-    def get_success_message(self):
+        update_button.click()
 
-        return self.driver.find_element(
-            *self.SUCCESS_MESSAGE
-        ).text
+    def get_page_title(self):
+
+        return self.driver.title

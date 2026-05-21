@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class FindTransactionsPage:
@@ -60,64 +62,96 @@ class FindTransactionsPage:
     )
 
     def __init__(self, driver):
+
         self.driver = driver
+
+        self.wait = WebDriverWait(
+            driver,
+            10
+        )
 
     def click_find_transactions_link(self):
 
-        self.driver.find_element(
-            *self.FIND_TRANSACTIONS_LINK
-        ).click()
+        link = self.wait.until(
+            EC.element_to_be_clickable(
+                self.FIND_TRANSACTIONS_LINK
+            )
+        )
+
+        link.click()
 
     def select_account(self):
 
-        dropdown = Select(
-            self.driver.find_element(
-                *self.ACCOUNT_DROPDOWN
+        dropdown_element = self.wait.until(
+            EC.visibility_of_element_located(
+                self.ACCOUNT_DROPDOWN
             )
+        )
+
+        dropdown = Select(
+            dropdown_element
         )
 
         dropdown.select_by_index(0)
 
     def search_by_transaction_id(self):
 
-        self.driver.find_element(
-            *self.TRANSACTION_ID
+        self.wait.until(
+            EC.visibility_of_element_located(
+                self.TRANSACTION_ID
+            )
         ).send_keys("1")
 
-        self.driver.find_element(
-            *self.FIND_BY_ID
+        self.wait.until(
+            EC.element_to_be_clickable(
+                self.FIND_BY_ID
+            )
         ).click()
 
     def search_by_date(self):
 
-        self.driver.find_element(
-            *self.DATE_FIELD
+        self.wait.until(
+            EC.visibility_of_element_located(
+                self.DATE_FIELD
+            )
         ).send_keys("05-18-2026")
 
-        self.driver.find_element(
-            *self.FIND_BY_DATE
+        self.wait.until(
+            EC.element_to_be_clickable(
+                self.FIND_BY_DATE
+            )
         ).click()
 
     def search_by_date_range(self):
 
-        self.driver.find_element(
-            *self.FROM_DATE
+        self.wait.until(
+            EC.visibility_of_element_located(
+                self.FROM_DATE
+            )
         ).send_keys("05-01-2026")
 
-        self.driver.find_element(
-            *self.TO_DATE
+        self.wait.until(
+            EC.visibility_of_element_located(
+                self.TO_DATE
+            )
         ).send_keys("05-18-2026")
 
-        self.driver.find_element(
-            *self.FIND_BY_DATE_RANGE
+        self.wait.until(
+            EC.element_to_be_clickable(
+                self.FIND_BY_DATE_RANGE
+            )
         ).click()
 
     def search_by_amount(self):
 
-        self.driver.find_element(
-            *self.AMOUNT
+        self.wait.until(
+            EC.visibility_of_element_located(
+                self.AMOUNT
+            )
         ).send_keys("100")
 
-        self.driver.find_element(
-            *self.FIND_BY_AMOUNT
+        self.wait.until(
+            EC.element_to_be_clickable(
+                self.FIND_BY_AMOUNT
+            )
         ).click()
