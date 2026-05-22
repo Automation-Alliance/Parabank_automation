@@ -39,30 +39,30 @@ class ForgotPasswordPage:
     def enter_recovery_details(self):
 
         self.wait.until(EC.visibility_of_element_located(self.FIRST_NAME)).send_keys(
-            "Ram"
+            "Prathmesh"
         )
 
         self.wait.until(EC.visibility_of_element_located(self.LAST_NAME)).send_keys(
-            "Bandaru"
+            "Suhagpure"
         )
 
         self.wait.until(EC.visibility_of_element_located(self.ADDRESS)).send_keys(
-            "Vijayawada"
+            "Dadaji Nagar"
         )
 
-        self.wait.until(EC.visibility_of_element_located(self.CITY)).send_keys(
-            "Vijayawada"
-        )
+        self.wait.until(EC.visibility_of_element_located(self.CITY)).send_keys("Saoner")
 
         self.wait.until(EC.visibility_of_element_located(self.STATE)).send_keys(
-            "Andhra Pradesh"
+            "Maharashtra"
         )
 
         self.wait.until(EC.visibility_of_element_located(self.ZIPCODE)).send_keys(
-            "520001"
+            "441107"
         )
 
-        self.wait.until(EC.visibility_of_element_located(self.SSN)).send_keys("123456")
+        self.wait.until(EC.visibility_of_element_located(self.SSN)).send_keys(
+            "123654789"
+        )
 
     def click_find_login_button(self):
 

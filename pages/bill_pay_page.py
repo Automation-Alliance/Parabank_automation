@@ -34,78 +34,46 @@ class BillPayPage:
 
     def click_bill_pay_link(self):
 
-        self.wait.until(
-            EC.presence_of_element_located(
-                self.BILL_PAY_LINK
-            )
-        )
+        self.wait.until(EC.presence_of_element_located(self.BILL_PAY_LINK))
 
-        self.driver.find_element(
-            *self.BILL_PAY_LINK
-        ).click()
+        self.driver.find_element(*self.BILL_PAY_LINK).click()
 
     def enter_bill_pay_details(self):
 
-        self.wait.until(
-            EC.visibility_of_element_located(
-                self.NAME
-            )
-        ).send_keys("Ram")
+        self.wait.until(EC.visibility_of_element_located(self.NAME)).send_keys("Atharv")
+
+        self.wait.until(EC.visibility_of_element_located(self.ADDRESS)).send_keys(
+            "Manewada"
+        )
+
+        self.wait.until(EC.visibility_of_element_located(self.CITY)).send_keys("Nagpur")
+
+        self.wait.until(EC.visibility_of_element_located(self.STATE)).send_keys(
+            "Maharashtra"
+        )
+
+        self.wait.until(EC.visibility_of_element_located(self.ZIPCODE)).send_keys(
+            "440024"
+        )
+
+        self.wait.until(EC.visibility_of_element_located(self.PHONE)).send_keys(
+            "7038360065"
+        )
+
+        self.wait.until(EC.visibility_of_element_located(self.ACCOUNT)).send_keys(
+            "12345"
+        )
 
         self.wait.until(
-            EC.visibility_of_element_located(
-                self.ADDRESS
-            )
-        ).send_keys("Vijayawada")
-
-        self.wait.until(
-            EC.visibility_of_element_located(
-                self.CITY
-            )
-        ).send_keys("Vijayawada")
-
-        self.wait.until(
-            EC.visibility_of_element_located(
-                self.STATE
-            )
-        ).send_keys("AP")
-
-        self.wait.until(
-            EC.visibility_of_element_located(
-                self.ZIPCODE
-            )
-        ).send_keys("520001")
-
-        self.wait.until(
-            EC.visibility_of_element_located(
-                self.PHONE
-            )
-        ).send_keys("8688726584")
-
-        self.wait.until(
-            EC.visibility_of_element_located(
-                self.ACCOUNT
-            )
+            EC.visibility_of_element_located(self.VERIFY_ACCOUNT)
         ).send_keys("12345")
 
-        self.wait.until(
-            EC.visibility_of_element_located(
-                self.VERIFY_ACCOUNT
-            )
-        ).send_keys("12345")
-
-        self.wait.until(
-            EC.visibility_of_element_located(
-                self.AMOUNT
-            )
-        ).send_keys("200")
+        self.wait.until(EC.visibility_of_element_located(self.AMOUNT)).send_keys("200")
 
     def click_send_payment_button(self):
 
         send_button = self.wait.until(
-            EC.element_to_be_clickable(
-                self.SEND_PAYMENT_BUTTON
-            )
+            EC.element_to_be_clickable(self.SEND_PAYMENT_BUTTON)
         )
 
         send_button.click()

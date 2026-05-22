@@ -2,7 +2,7 @@ from utils.db_utils import DatabaseManager
 
 db = DatabaseManager()
 
-db.insert_user("admin123", "admin123")
+db.insert_user("admin1234", "admin1234")
 
 print("User Inserted Successfully")
 

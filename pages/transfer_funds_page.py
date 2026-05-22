@@ -16,7 +16,7 @@ class TransferFundsPage:
 
     TRANSFER_BUTTON = (By.XPATH, "//input[@value='Transfer']")
 
-    SUCCESS_MESSAGE = (By.XPATH, "//h1[contains(text(),'Transfer Complete!')]")
+    SUCCESS_MESSAGE = (By.XPATH, "//div[@id='showResult']//h1")
 
     def __init__(self, driver):
 
@@ -53,7 +53,7 @@ class TransferFundsPage:
 
         dropdown = Select(self.driver.find_element(*self.TO_ACCOUNT))
 
-        dropdown.select_by_index(0)
+        dropdown.select_by_index(1)
 
     def click_transfer_button(self):
 
@@ -61,10 +61,14 @@ class TransferFundsPage:
             EC.element_to_be_clickable(self.TRANSFER_BUTTON)
         )
 
-        transfer_button.click()
+        self.driver.execute_script("arguments[0].click();", transfer_button)
 
     def get_success_message(self):
+        self.wait.until(
+            lambda driver: driver.find_element(
+                By.ID, "showResult"
+            ).value_of_css_property("display")
+            != "none"
+        )
 
-        return self.wait.until(
-            EC.visibility_of_element_located(self.SUCCESS_MESSAGE)
-        ).text
+        return self.driver.find_element(*self.SUCCESS_MESSAGE).text
