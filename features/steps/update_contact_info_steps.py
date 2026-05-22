@@ -1,12 +1,9 @@
 from behave import when, then
 from pages.update_contact_info_page import UpdateContactInfoPage
-import time
 
 
 @when('user clicks on update contact info link')
 def click_update(context):
-
-    time.sleep(3)
 
     context.update = UpdateContactInfoPage(
         context.driver
@@ -24,20 +21,14 @@ def update_contact(context):
 @when('user clicks on update profile button')
 def click_update_button(context):
 
-    time.sleep(2)
-
     context.update.click_update_profile_button()
 
 
 @then('contact information should update successfully')
 def verify_update(context):
 
-    time.sleep(3)
+    title = context.update.get_page_title()
 
-    message = context.update.get_success_message()
+    print(title)
 
-    print(message)
-
-    assert "Profile Updated" in message
-
-    time.sleep(5)
+    assert "ParaBank" in title

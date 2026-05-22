@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class LogoutPage:
@@ -14,16 +16,30 @@ class LogoutPage:
     )
 
     def __init__(self, driver):
+
         self.driver = driver
+
+        self.wait = WebDriverWait(
+            driver,
+            10
+        )
 
     def click_logout_link(self):
 
-        self.driver.find_element(
-            *self.LOGOUT_LINK
-        ).click()
+        logout_link = self.wait.until(
+            EC.element_to_be_clickable(
+                self.LOGOUT_LINK
+            )
+        )
+
+        logout_link.click()
 
     def get_login_panel(self):
 
-        return self.driver.find_element(
-            *self.LOGIN_PANEL
-        ).text
+        login_panel = self.wait.until(
+            EC.visibility_of_element_located(
+                self.LOGIN_PANEL
+            )
+        )
+
+        return login_panel.text

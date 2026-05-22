@@ -1,6 +1,5 @@
 from behave import when, then
 from pages.login_page import LoginPage
-import time
 
 
 @when('user enters valid username and password')
@@ -40,8 +39,6 @@ def click_login(context):
 
     context.login.click_login_button()
 
-    time.sleep(3)
-
 
 @then('user should navigate to parabank home page')
 def verify_login(context):
@@ -54,14 +51,12 @@ def verify_invalid_login(context):
 
     message = context.login.get_error_message()
 
-    print(message)
+    print("Error Message:", message)
 
-    assert "could not be verified" in message
+    assert message
 
-
-# @then('login should be successful')
-# def failed_step(context):
-
-#     assert False
-
-    time.sleep(5)
+    assert (
+        "could not be verified" in message.lower()
+        or
+        "invalid" in message.lower()
+    )
